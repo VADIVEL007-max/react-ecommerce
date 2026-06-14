@@ -62,99 +62,75 @@ const Offer = () => {
       <div className="mx-auto max-w-7xl overflow-hidden rounded-3xl bg-[#162033] shadow-2xl">
         
         <AnimatePresence mode="wait">
-          <motion.div
-            key={current}
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -100 }}
-            transition={{ duration: 0.8 }}
-            className="flex flex-col items-center gap-6 p-6 md:flex-row md:p-8"
-          >
-            
-            {/* Image */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
-              className="w-full md:w-1/2 overflow-hidden rounded-2xl"
-            >
-              <motion.img
-                src={offers[current].image}
-                className="h-[300px] w-full object-cover shadow-2xl"
-                alt="Offer"
-                // className="h-full w-full object-cover shadow-2xl"
-                whileHover={{
-                  scale: 1.05,
-                }}
-                transition={{ duration: 0.4 }}
-              />
-            </motion.div>
+        <motion.div
+  key={current}
+  initial={{ opacity: 0, x: 100 }}
+  animate={{ opacity: 1, x: 0 }}
+  exit={{ opacity: 0, x: -100 }}
+  transition={{ duration: 0.8 }}
+  className="flex flex-row items-center gap-4 p-4 md:gap-6 md:p-6"
+>
+  {/* Image */}
+  <motion.div
+    initial={{ opacity: 0, scale: 0.9 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ delay: 0.2 }}
+    className="w-[35%] overflow-hidden rounded-2xl"
+  >
+    <motion.img
+      src={offers[current].image}
+      alt="Offer"
+      className="h-[180px] w-full object-cover shadow-2xl"
+      whileHover={{ scale: 1.05 }}
+      transition={{ duration: 0.4 }}
+    />
+  </motion.div>
 
-            {/* Content */}
-            <div className="w-full md:w-1/2">
-              
-              {/* Badge */}
-              <motion.span
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="inline-block rounded-full bg-blue-500/20 px-4 py-1 text-sm font-medium text-blue-400"
-              >
-                {offers[current].badge}
-              </motion.span>
+  {/* Content */}
+  <div className="w-[65%]">
+    <motion.span
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.3 }}
+      className="inline-block rounded-full bg-blue-500/20 px-3 py-1 text-xs font-medium text-blue-400"
+    >
+      {offers[current].badge}
+    </motion.span>
 
-              {/* Title */}
-              <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                className="mt-5 text-4xl font-bold leading-tight text-white md:text-5xl"
-              >
-                {offers[current].title}
-              </motion.h1>
+    <motion.h1
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.4 }}
+      className="mt-3 text-lg font-bold text-white md:text-2xl"
+    >
+      {offers[current].title}
+    </motion.h1>
 
-              {/* Description */}
-              <motion.p
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-                className="mt-6 text-lg leading-8 text-gray-400"
-              >
-                {offers[current].desc}
-              </motion.p>
+    <motion.p
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.5 }}
+      className="mt-2 text-sm text-gray-400 md:text-base"
+    >
+      {offers[current].desc}
+    </motion.p>
 
-              {/* Buttons */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
-                className="mt-8 flex flex-wrap gap-4"
-              >
-                
-                <motion.button
-                  whileHover={{
-                    scale: 1.05,
-                    boxShadow: "0px 0px 20px rgba(37,99,235,0.5)",
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                  className="rounded-xl bg-blue-600 px-7 py-4 text-lg font-semibold text-white"
-                >
-                  Buy Now
-                </motion.button>
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.6 }}
+      className="mt-4 flex gap-2"
+    >
+      <button className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white">
+        Buy Now
+      </button>
 
-                <motion.button
-                  whileHover={{
-                    scale: 1.05,
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                  className="rounded-xl border border-white/10 bg-white/5 px-7 py-4 text-lg font-semibold text-white hover:bg-white/10"
-                >
-                  Learn More
-                </motion.button>
-
-              </motion.div>
-            </div>
-          </motion.div>
+      <button className="rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white">
+        Learn More
+      </button>
+    </motion.div>
+  </div>
+        </motion.div>
         </AnimatePresence>
 
         {/* Dots */}
