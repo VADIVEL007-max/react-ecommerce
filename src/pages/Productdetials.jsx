@@ -10,10 +10,10 @@ const Productdetials = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await fetch(`https://dummyjson.com/products/${id}`);
+        const res = await fetch(`https://react-ecommerce-backend-pb9m.onrender.com/products/${id}`);
         const data = await res.json();
-        setSingleproduct(data);
-        setMainImage(data.thumbnail); // Set initial main image
+        setSingleproduct(data.data);
+        setMainImage(data.product_thumbnail); // Set initial main image
       } catch (error) {
         console.error("Error fetching product:", error);
       }
@@ -67,14 +67,14 @@ const Productdetials = () => {
               <div className="relative w-full aspect-square bg-gray-50 dark:bg-gray-700/50 rounded-3xl overflow-hidden group shadow-lg backdrop-blur-sm border border-gray-100 dark:border-gray-700">
                 <img
                   src={mainImage}
-                  alt={singleproduct.title}
+                  alt={singleproduct.product_title}
                   className="w-full h-full object-contain p-8 group-hover:scale-110 transition-transform duration-500 ease-out"
                 />
               </div>
 
               {/* THUMBNAILS */}
               <div className="flex gap-4 overflow-x-auto pb-2 custom-scrollbar">
-                {singleproduct.images.map((img, index) => (
+                {singleproduct.product_image.map((img, index) => (
                   <button
                     key={index}
                     onClick={() => setMainImage(img)}
@@ -102,7 +102,7 @@ const Productdetials = () => {
                   <span className="bg-blue-100/80 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300 px-4 py-1.5 rounded-full text-sm font-semibold backdrop-blur-sm border border-blue-200 dark:border-blue-800">
                     {singleproduct.category}
                   </span>
-                  {singleproduct.tags?.map(tag => (
+                  {singleproduct.product_tag?.map(tag => (
                     <span key={tag} className="bg-gray-100/80 text-gray-700 dark:bg-gray-700/50 dark:text-gray-300 px-4 py-1.5 rounded-full text-sm font-medium capitalize backdrop-blur-sm border border-gray-200 dark:border-gray-600">
                       #{tag}
                     </span>
@@ -111,13 +111,13 @@ const Productdetials = () => {
 
                 {/* TITLE */}
                 <h1 className="text-4xl lg:text-5xl font-extrabold text-gray-900 dark:text-white leading-tight tracking-tight">
-                  {singleproduct.title}
+                  {singleproduct.product_title}
                 </h1>
 
                 {/* BRAND & SKU */}
                 <div className="flex items-center gap-4 mt-4">
                   <p className="text-lg text-gray-500 dark:text-gray-400">
-                    Brand: <span className="font-bold text-gray-900 dark:text-gray-100">{singleproduct.brand || 'Generic'}</span>
+                    Brand: <span className="font-bold text-gray-900 dark:text-gray-100">{singleproduct.product_brand || 'Generic'}</span>
                   </p>
                   <span className="w-1.5 h-1.5 rounded-full bg-gray-300 dark:bg-gray-600"></span>
                   <p className="text-sm font-mono text-gray-400 dark:text-gray-500 tracking-wider">
@@ -131,18 +131,18 @@ const Productdetials = () => {
                     {'★'.repeat(Math.round(singleproduct.rating))}{'☆'.repeat(5 - Math.round(singleproduct.rating))}
                   </div>
                   <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">
-                    {singleproduct.rating} <span className="text-gray-400 font-normal">Rating</span>
+                    {singleproduct.product_rating} <span className="text-gray-400 font-normal">Rating</span>
                   </p>
                 </div>
 
                 {/* PRICE SECTION */}
                 <div className="flex items-baseline gap-4 mt-8">
                   <h2 className="text-5xl font-black text-gray-900 dark:text-white">
-                    ${singleproduct.price}
+                    ${singleproduct.product_price}
                   </h2>
                   <div className="flex flex-col">
                     <span className="text-lg text-gray-400 line-through decoration-red-500/50 decoration-2">
-                      ${(singleproduct.price / (1 - singleproduct.discountPercentage / 100)).toFixed(2)}
+                      ${(singleproduct.product_price / (1 - singleproduct.product_discountPercentage / 100)).toFixed(2)}
                     </span>
                     <span className="text-sm font-bold text-green-500 bg-green-100/50 dark:bg-green-900/30 px-2 py-0.5 rounded text-center mt-1">
                       {singleproduct.discountPercentage}% OFF

@@ -73,7 +73,6 @@ const Route= createBrowserRouter([{
       element:<ExpensiveCal/>
     },
     
-
   ],
   errorElement:<Errorpage/>
  }])

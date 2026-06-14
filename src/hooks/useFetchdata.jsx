@@ -7,10 +7,12 @@ const[isLoading,setisLoading]=useState(false);
   const Fetchdata= async()=>{
     try{
     setisLoading(true)
-    const res= await fetch("https://dummyjson.com/products")
+    const res= await fetch("https://react-ecommerce-backend-pb9m.onrender.com/products")
     const data=await res.json();
-    setProductData(data.products)
+    setProductData(data.data)
     setisLoading(false)
+    // console.log(ProductData);
+    
   }
   catch(error){
     console.log("Fetch error:", error);

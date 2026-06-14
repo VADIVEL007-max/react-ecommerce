@@ -15,9 +15,9 @@ export const AppProvider = ({ children }) => {
     const Fetchdata= async()=>{
         try{
         
-        const res= await fetch("https://dummyjson.com/products")
+        const res= await fetch("https://react-ecommerce-backend-pb9m.onrender.com/products")
         const data=await res.json();
-       SetDatas(data.products)
+       SetDatas(data.data)
         
       }
       catch(error){

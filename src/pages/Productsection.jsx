@@ -242,7 +242,7 @@ import Loader from "./Loader";
 const ProductcardwithBrand=(Component)=>{
   const NewComponent=(props)=>{
     return<div>
-      <p className="text-white font-semibold text-2xl">{props.brand}</p>
+      <p className="text-white font-semibold text-2xl">{props.product_brand}</p>
     <Component {...props}/>
     </div>
   }
@@ -423,17 +423,21 @@ const{isLoading,ProductData}=useFetchdata();
     </div>
     <div className="mb-4 grid gap-4 sm:grid-cols-2 md:mb-8 lg:grid-cols-3 xl:grid-cols-4">
       {
-        ProductData.map((item,index)=>{
+        ProductData.map((item)=>{
           return <div 
-            key={uuidv4()} >
+            key={item.product_id} >
+              {/* console.log(product_id); */}
+              
             <Productnewcard
-            brand={item.brand}
-            product_id={item.id}
-            product_name={item.title}
-            Prize={item.price}
-            offers={item.discountPercentage}
-            Rating={item.rating}
-            img={item.thumbnail}
+            brand={item.product_brand}
+            product_id={item.product_id}
+            product_name={item.product_title}
+            Prize={item.product_price}
+            offers={item.product_discountPercentage}
+            Rating={item.product_rating}
+            thumbnail={item.product_thumbnail}
+            img={item.product_image}
+            tag={item.product_tag}
           />
           </div>
         })
