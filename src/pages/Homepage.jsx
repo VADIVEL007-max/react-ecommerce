@@ -4,6 +4,7 @@ import Herosection from './Herosection'
 import Productsection from './Productsection'
 import AppContext from '../context/AppContext'
 import ProductIcon from './ProductIcon';
+import Offer from './Offer';
 
 
 function Homepage() {
@@ -20,7 +21,9 @@ function Homepage() {
 
   {/* <h1>hello</h1>
   <ProductIcon/> */}
+  {/* <Offer/> */}
   <Herosection/>
+  <Offer/>
 {/* / */}
   <Productsection/>
 
