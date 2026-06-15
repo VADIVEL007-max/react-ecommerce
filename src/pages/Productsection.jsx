@@ -12,12 +12,12 @@ import Loader from "./Loader";
           <a href="#">
             <img
               className="mx-auto h-full dark:hidden"
-              src={props.img}
+              src={props.thumbnail}
               alt=""
             />
             <img
               className="mx-auto hidden h-full dark:block"
-              src={props.img}
+              src={props.thumbnail}
               alt=""
             />
           </a>
